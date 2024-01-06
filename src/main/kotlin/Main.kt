@@ -2,7 +2,7 @@ fun main() {
     val person: Person = Person("아무개")
     var person2: Person?
 
-    val str: String? = null
+    val str: String? = "ABCD"
     println(str?.length ?:0)
 }
 
