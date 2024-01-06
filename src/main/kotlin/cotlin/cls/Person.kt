@@ -42,9 +42,9 @@ class Person(name: String, var age: Int) {
         println("두번째 부생성자")
     }
 
-    fun isAdult(): Boolean {
-        return this.age >= 20
-    }
+    //fun isAdult(): Boolean {
+    //    return this.age >= 20
+    //ß}
 
     val isAdult: Boolean
         get() = this.age >= 20
