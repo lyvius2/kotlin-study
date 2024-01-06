@@ -1,3 +1,5 @@
+import jakarta.cls.Person
+
 fun main() {
     val person: Person = Person("아무개")
     var person2: Person?
