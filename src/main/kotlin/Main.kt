@@ -1,8 +1,8 @@
-import jakarta.cls.Person
+import jakarta.cls.JavaPerson
 
 fun main() {
-    val person: Person = Person("아무개")
-    var person2: Person?
+    val javaPerson: JavaPerson = JavaPerson("아무개")
+    var javaPerson2: JavaPerson?
 
     val str: String? = "ABCD"
     println(str?.length ?:0)

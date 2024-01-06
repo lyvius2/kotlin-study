@@ -1,28 +1,28 @@
-import jakarta.cls.Person
+import jakarta.cls.JavaPerson
 
 fun main() {
     val number1: Int? = 3
     val number2: Long = number1?.toLong() ?: 0L
 
     println(number1?.toLong() ?: (0L + number2))
-    val person: Person = Person("아무개", 27)
-    printAgeIfPerson(person)
-    println("이름은 ${person.name}, 나이는 ${person.age}세입니다.")
+    val javaPerson: JavaPerson = JavaPerson("아무개", 27)
+    printAgeIfPerson(javaPerson)
+    println("이름은 ${javaPerson.name}, 나이는 ${javaPerson.age}세입니다.")
     var str =
     """
         ABCD
         EFG
-        ${person.age}
+        ${javaPerson.age}
     """.trimIndent()
 
     println(str)
 }
 
 fun printAgeIfPerson(obj: Any?) {
-    if (obj is Person) {
+    if (obj is JavaPerson) {
         println(obj.age)            // smart cast
-        val person = obj as? Person
-        println(person?.age ?: 11)
+        val javaPerson = obj as? JavaPerson
+        println(javaPerson?.age ?: 11)
         return
     }
     println("!")
