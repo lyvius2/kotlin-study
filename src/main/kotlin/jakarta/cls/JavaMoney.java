@@ -4,10 +4,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
-public class Money implements Comparable<Money> {
+public class JavaMoney implements Comparable<JavaMoney> {
     private long amount;
 
-    public Money(long amount) {
+    public JavaMoney(long amount) {
         this.amount = amount;
     }
 
@@ -15,12 +15,12 @@ public class Money implements Comparable<Money> {
         return amount;
     }
 
-    public Money plus(Money other) {
-        return new Money(this.amount + other.getAmount());
+    public JavaMoney plus(JavaMoney other) {
+        return new JavaMoney(this.amount + other.getAmount());
     }
 
     @Override
-    public int compareTo(@NotNull Money o) {
+    public int compareTo(@NotNull JavaMoney o) {
         return Long.compare(this.amount, o.amount);
     }
 
@@ -28,8 +28,8 @@ public class Money implements Comparable<Money> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Money money = (Money) o;
-        return amount == money.amount;
+        JavaMoney javaMoney = (JavaMoney) o;
+        return amount == javaMoney.amount;
     }
 
     @Override
