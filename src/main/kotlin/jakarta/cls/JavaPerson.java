@@ -1,6 +1,12 @@
 package jakarta.cls;
 
 public class JavaPerson {
+    private static final int MIN_AGE = 1;
+
+    public static JavaPerson newBaby(String name) {
+        return new JavaPerson(name, MIN_AGE);
+    }
+
     private final String name;
     private int age;
 
