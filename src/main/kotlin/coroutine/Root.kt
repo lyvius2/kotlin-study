@@ -15,6 +15,7 @@ fun main(): Unit = runBlocking {
     }
 
     delay(1_000L)
+    //job.await() // async 함수의 결과를 리턴함으로써 에러를 부모에게 전파한다
 }
 
 fun asyncSample(): Unit = runBlocking {
