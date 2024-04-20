@@ -31,7 +31,7 @@ suspend fun apiCall2(numeric: Int): Int {
     return numeric + 2
 }
 
-fun asyncSample(): Unit = runBlocking {
+fun asyncExample(): Unit = runBlocking {
     val job = async {
         3 + 5
     }
