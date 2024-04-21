@@ -14,5 +14,4 @@ fun main(): Unit = runBlocking {
         delay(500L)
         throw IllegalArgumentException("코루틴 실패!")
     }
-
 }
