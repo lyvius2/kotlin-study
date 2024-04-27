@@ -42,7 +42,7 @@ class Cage2<T> {
         this.animals.add(animal)
     }
 
-    fun moveFrom(cage: Cage2<T>) {
+    fun moveFrom(cage: Cage2<out T>) {
         this.animals.addAll(cage.animals)
     }
 }
