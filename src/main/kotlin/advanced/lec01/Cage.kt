@@ -12,7 +12,11 @@ fun main() {
     val goldFishCage = Cage2<GoldFish>()
     goldFishCage.put(GoldFish("금붕어"))
     val fishCage = Cage2<Fish>()
+
+    // 공변
     fishCage.moveFrom(goldFishCage)
+    // 반공변
+    goldFishCage.moveTo(fishCage)
 }
 
 class Cage {
@@ -42,7 +46,11 @@ class Cage2<T> {
         this.animals.add(animal)
     }
 
-    fun moveFrom(cage: Cage2<out T>) {
-        this.animals.addAll(cage.animals)
+    fun moveFrom(otherCage: Cage2<out T>) {
+        this.animals.addAll(otherCage.animals)
+    }
+
+    fun moveTo(otherCage: Cage2<in T>) {
+        otherCage.animals.addAll(this.animals)
     }
 }
