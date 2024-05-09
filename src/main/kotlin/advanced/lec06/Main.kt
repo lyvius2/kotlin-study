@@ -15,7 +15,7 @@ fun checkStringList(data: Any) {
     // data 가 List 인지 확인
     if (data is MutableList<*>) {
         val element: Any? = data[0]
-        data.add(2)
+        //data.add(2)
     }
 }
 
