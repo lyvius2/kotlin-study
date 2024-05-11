@@ -49,7 +49,7 @@ class Cage5<T>(
         otherCage.animals.addAll(this.animals)
     }
 }
-
+/*
 fun List<String>.hasIntersection(other: List<String>): Boolean {
     return (this.toSet() intersect other.toSet()).isNotEmpty()
 }
@@ -57,3 +57,4 @@ fun List<String>.hasIntersection(other: List<String>): Boolean {
 fun <T> List<T>.hasIntersection(other: List<T>): Boolean {
     return (this.toSet() intersect other.toSet()).isNotEmpty()
 }
+ */
