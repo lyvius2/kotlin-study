@@ -1,7 +1,7 @@
 package advanced.lec08
 
 class Person(
-    private val name: String,
+    var name: String = "",
 ) {
     val isKim: Boolean
         get() = name.startsWith("김")

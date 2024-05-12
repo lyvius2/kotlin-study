@@ -5,10 +5,11 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class PersonTest1 {
+    private val person = Person()
     @Test
     fun isKimTest() {
         // given
-        val person = Person("김갑수")
+        val person = person.apply { name = "김갑수" }
 
         // when & then
         assertTrue(person.isKim)
@@ -17,7 +18,7 @@ class PersonTest1 {
     @Test
     fun maskingNameTest() {
         // given
-        val person = Person("아무개")
+        val person = person.apply { name = "아무개" }
 
         // when & then
         assertEquals(person.maskingName, "아**")
