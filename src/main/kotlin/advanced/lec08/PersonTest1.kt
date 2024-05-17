@@ -8,19 +8,11 @@ class PersonTest1 {
     private val person = Person()
     @Test
     fun isKimTest() {
-        // given
-        val person = person.apply { name = "김갑수" }
-
-        // when & then
-        assertTrue(person.isKim)
+        assertTrue(person.apply { name = "김갑수" }.isKim)
     }
 
     @Test
     fun maskingNameTest() {
-        // given
-        val person = person.apply { name = "아무개" }
-
-        // when & then
-        assertEquals(person.maskingName, "아**")
+        assertEquals(person.apply { name = "아무개" }.maskingName, "아**")
     }
 }
