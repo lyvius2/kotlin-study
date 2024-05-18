@@ -1,14 +1,13 @@
 package advanced.lec09
 
+import kotlin.reflect.KProperty
+
 // by lazy()
 class Person3 {
-    private val delegateProperty = LazyInitProperty {
+    val name: String by LazyInitProperty {
         Thread.sleep(2_000)
         "아무개"
     }
-
-    val name: String
-        get() = delegateProperty.value
 }
 
 class LazyInitProperty<T>(val init: () -> T) {
@@ -20,9 +19,17 @@ class LazyInitProperty<T>(val init: () -> T) {
            }
             return _value!!
         }
+
+    operator fun getValue(thisRef: Any, property: KProperty<*>): T {
+        return value
+    }
+
+    operator fun setValue(thisRef: Any, property: KProperty<*>, value: T) {
+        this._value = value
+    }
 }
 
 fun main() {
-    var person = Person3()
+    val person = Person3()
     println(person.name)
 }
