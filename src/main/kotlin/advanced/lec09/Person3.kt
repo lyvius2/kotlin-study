@@ -1,5 +1,6 @@
 package advanced.lec09
 
+import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 
 // by lazy()
@@ -7,6 +8,19 @@ class Person3 {
     val name: String by LazyInitProperty {
         Thread.sleep(2_000)
         "아무개"
+    }
+
+    val status: String by object : ReadOnlyProperty<Person3, String> {
+        private var isGreen: Boolean = false
+        override fun getValue(thisRef: Person3, property: KProperty<*>): String {
+            return if (isGreen) {
+                isGreen = false
+                "Happy"
+            } else {
+                isGreen = true
+                "Sad"
+            }
+        }
     }
 }
 
@@ -32,4 +46,6 @@ class LazyInitProperty<T>(val init: () -> T) {
 fun main() {
     val person = Person3()
     println(person.name)
+    println(person.status)
+    println(person.status)
 }
