@@ -1,9 +1,12 @@
 package advanced.lec22_container
 
+import org.reflections.Reflections
 import kotlin.reflect.KClass
 import kotlin.reflect.KFunction
 import kotlin.reflect.KParameter
 import kotlin.reflect.cast
+
+class DI
 
 object ContainerV1 {
     // 등록한 클래스를 보관
@@ -19,6 +22,19 @@ object ContainerV1 {
             ?: throw IllegalArgumentException("해당 인스턴스 타입을 찾을 수 없습니다")
     }
 }
+
+fun start(clazz: KClass<*>) {
+    val reflections = Reflections(clazz.packageName)
+    val jClasses = reflections.getTypesAnnotatedWith(MyClass::class.java)
+    jClasses.forEach { jClass -> ContainerV2.register(jClass.kotlin) }
+}
+
+private val KClass<*>.packageName: String
+    get() {
+        val qualifiedName = this.qualifiedName ?: throw IllegalArgumentException("익명 객체입니다.")
+        val hierarchy = qualifiedName.split(".")
+        return hierarchy.subList(0, hierarchy.lastIndex).joinToString(".")
+    }
 
 object ContainerV2 {
     // 등록한 클래스를 보관
@@ -66,14 +82,28 @@ fun main() {
     val aService = ContainerV1.getInstance(AService::class)
     aService.print()
      */
+
+    /*
     ContainerV2.register(AService::class)
     ContainerV2.register(BService::class)
 
     val bService = ContainerV2.getInstance(BService::class)
     bService.print()
+
+    val reflections = Reflections("advanced.lec22_container")
+    val jClasses = reflections.getTypesAnnotatedWith(MyClass::class.java)
+    println(jClasses)
+     */
+
+    start(DI::class)
+    val bService = ContainerV2.getInstance(BService::class)
+    bService.print()
 }
 
-class AService {
+annotation class MyClass
+
+@MyClass
+class AService() {
     fun print() {
         println("A Service 입니다")
     }
@@ -81,6 +111,7 @@ class AService {
 
 class CService
 
+@MyClass
 class BService(
     private val sService: AService,
     private val cService: CService?,
