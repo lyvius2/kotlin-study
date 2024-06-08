@@ -4,6 +4,7 @@ plugins {
     kotlin("jvm") version "1.8.20"
     id("me.champeau.gradle.jmh") version "0.5.3"
     id("org.jetbrains.dokka") version "1.8.20"
+    id("org.jlleitschuh.gradle.ktlint") version "11.4.2"
 }
 
 group = "org.example"
