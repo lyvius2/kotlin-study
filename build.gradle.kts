@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.8.20"
     id("me.champeau.gradle.jmh") version "0.5.3"
+    id("org.jetbrains.dokka") version "1.8.20"
 }
 
 group = "org.example"
